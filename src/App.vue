@@ -56,6 +56,15 @@ export default {
         this.player.src = this.current.src;
       }
       this.player.play();
+      this.player.addEventListener('ended', function () {
+        this.index++;
+        if (this.index > this.songs.length - 1) {
+          this.index = 0;
+        }
+
+        this.current = this.songs[this.index];
+        this.play(this.current);
+      }.bind(this));
       this.isPlaying = true;
     },
     pause () {
@@ -89,5 +98,40 @@ export default {
 </script>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: sans-serif;
+}
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  backgroud-color: #212121;
+  color: #FFF;
+}
+main {
+  width: 100%;
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 25px;
+
+}
+.song-title {
+  color: #212121;
+  font-size: 40px;
+  font-weight: 700;
+  text-transform: upercase;
+  text-align: center;
+
+}
+.song-title span {
+  font-weight: 400;
+  font-style: italic;
+}
 
 </style>
