@@ -6,6 +6,12 @@
    </header>
     <main>
     <section class="player">
+        <div class="image-banner">
+        <img v-bind:src="current.banner" style="border-radius: 20px; width: 500px;">
+          <br>
+        </div>
+        <br>
+        <br>
         <h2 class="song-title">{{current.title}} - <span>{{current.artist}}</span></h2>
         <br>
         <div class="controls">
@@ -48,7 +54,8 @@ export default {
         {
           title: 'Boarding song',
           artist: 'Emirates',
-          src: require('./assets/Emirates - Boarding Song (Full).mp3')
+          src: require('./assets/Emirates - Boarding Song (Full).mp3'),
+          banner: require('@/assets/E-logo.png')
         },
         {
           title: 'Piano Beat',
@@ -91,7 +98,7 @@ export default {
     next () {
       this.index++;
       if (this.index > this.songs.length -1) {
-        this.index = 0;
+        this.index = -1;
       }
       this.current = this.songs[this.index];
       this.play(this.current);
@@ -135,7 +142,12 @@ main {
   max-width: 768px;
   margin: 0 auto;
   padding: 25px;
-
+}
+.image-banner {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 .song-title {
   color: #212121;
@@ -188,7 +200,7 @@ main {
   color: #FFF;
 }
 .playlist .song.playing {
-  backgroud-color : black;
+  background-color: #A6A6A6;
 }
 h3 {
   font-size: 35px;
