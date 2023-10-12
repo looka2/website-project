@@ -7,7 +7,7 @@
     <main>
     <section class="player">
         <div class="image-banner">
-        <img v-bind:src="current.banner" style="border-radius: 20px; width: 500px;">
+          <img v-bind:src="current.banner" style="border-radius: 20px; width: 500px; height: 100%;">
           <br>
         </div>
         <br>
@@ -60,12 +60,14 @@ export default {
         {
           title: 'Piano Beat',
           artist: 'Unknown',
-          src: require('./assets/Upbeat Piano Loop.mp3')
+          src: require('./assets/Upbeat Piano Loop.mp3'),
+          banner: require('@/assets/piano.jpg')
         },
         {
           title : 'Allahuakbar creeper',
           artist : 'A Youtube User',
-          src: require('./assets/cursed.mp3')
+          src: require('@/assets/cursed.mp3'),
+          banner: require('@/assets/creeper.png')
         }
       ],
       player: new Audio()
@@ -81,7 +83,7 @@ export default {
       this.player.play();
       this.player.addEventListener('ended', function () {
         this.index++;
-        if (this.index == this.songs.length ) {
+        if (this.index > this.songs.length -1 ) {
           this.index = 0;
         }
 
