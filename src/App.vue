@@ -32,8 +32,8 @@
         <br>
         <br>
         <div class="controls-play">
-        <button v-for="song in songs" :key="song.src" @click="play(song)" :class="(song.src == current.src) ? 'song playing' : 'song'" class="playlist-controls">
-            {{song.title}} - {{song.artist}} <br />
+          <button v-for="song in songs" :key="song.src" @click="play(song)" :class="(song.src == current.src) ? 'song playing' : 'song'" class="playlist-controls" style="justify-content: center; padding: 15px;">
+            <div style="vertical-align: center; text-align: left"><img v-bind:src="song.banner" style="border-radius: 5px; width: 50px; height: 50px;"><h5 class="songs-text">{{song.title}}</h5><br />{{song.artist}}</div><br />
           </button>
         </div>
       </section>
@@ -99,12 +99,12 @@ export default {
     },
     next () {
       this.index++;
-      if (this.index > this.songs.length -1) {
+      if (this.index > this.songs.length - 1) {
         this.index = 0;
       }
       this.current = this.songs[this.index];
       this.play(this.current);
-    }, 
+    },
     prev () {
       this.index--;
       if (this.index < 0) {
@@ -174,8 +174,9 @@ main {
 
 .controls-play {
   display: block;
-  align-items: center;
-  justify-content: center;
+  align-items: right;
+  justify-content: right;
+  text-align: right;
 }
 .playlist-controls {
   border-radius: 10px;
@@ -207,6 +208,10 @@ main {
 h3 {
   font-size: 35px;
   text-align: center;
+}
+
+.songs-text {
+  text-align: left 70px;
 }
 
 
