@@ -68,6 +68,12 @@ export default {
           artist : 'A Youtube User',
           src: require('@/assets/cursed.mp3'),
           banner: require('@/assets/creeper.png')
+        },
+        {
+          title : 'You are hearing this because your playlist has ended',
+          artist : 'Please restart the playlist',
+          src: require('@/assets/mp3_3.mp3'),
+          banner: require('@/assets/creeper.png')
         }
       ],
       player: new Audio()
@@ -85,8 +91,8 @@ play (song) {
       this.player.play();
       this.player.addEventListener('ended', function () {
         this.index++;
-        if (this.index > this.songs.length - 1) {
-          this.isPlaying = false;
+        if (this.index > this.songs.length) {
+          this.index = this.songs.length -1;
         }
 
         this.current = this.songs[this.index];
@@ -100,8 +106,8 @@ play (song) {
     },
     next () {
       this.index++;
-      if (this.index > this.songs.length - 1) {
-        this.isPlaying = false;
+      if (this.index > this.songs.length) {
+        this.index = -1;
       }
 
       this.current = this.songs[this.index];
