@@ -33,7 +33,7 @@
         <br>
         <div class="controls-play">
           <button v-for="song in songs" :key="song.src" @click="play(song)" :class="(song.src == current.src) ? 'song playing' : 'song'" class="playlist-controls" style="justify-content: center; padding: 15px;">
-            <div style="vertical-align: center; text-align: left"><img v-bind:src="song.banner" style="border-radius: 5px; width: 50px; height: 50px;"><h5 class="songs-text">{{song.title}}</h5><br />{{song.artist}}</div><br />
+            <div style="vertical-align: center; text-align: left"><img v-bind:src="song.banner" style="border-radius: 5px; width: 50px; height: 50px; vertical-align: middle;"><span style="padding: 15px;">{{song.title}} - {{song.artist}}</span></div><br />
           </button>
         </div>
       </section>
